@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "788248811357",
+    "project_id": "sima-orbit",
+    "storage_bucket": "sima-orbit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788248811357:android:b67d4db597b47864e43ab4",
+        "android_client_info": {
+          "package_name": "com.gariskode.sima_orbit_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788248811357-sv06m8pntug9cvcprakb3eq3uc293et6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxhp9umhhNVIeKQ1nAZNaI-60NhnEHT_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788248811357-sv06m8pntug9cvcprakb3eq3uc293et6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -19,11 +19,11 @@ class AutoLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<bool>(
+    return FutureBuilder<bool>( 
       future: Token(),
       builder: (context, AsyncSnapshot<bool> snapshot) {
         if (snapshot.hasData) {
-          return snapshot.data! ? HomePage() : onBoardingPage();
+          return snapshot.data! ? BottomNavigation() : onBoardingPage();
         } else {
           return CircularProgressIndicator();
         }

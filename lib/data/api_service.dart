@@ -3,7 +3,8 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 
 class ApiServices {
-  String _url = "http://10.0.2.2:3000/api";
+  // String _url = "http://10.0.2.2:3000/api";
+  String _url = "http://192.168.100.123:3000/api";
   Dio dio = Dio();
 
   Future<Map<String, dynamic>> ListFakultasEndpoint() async {
@@ -67,8 +68,9 @@ class ApiServices {
   }
 
   Future LoginEndpoint(Object? data) async {
+    log("$_url/login");
     try {
-      var response = await dio.get("$_url/login", data: data);
+      var response = await dio.post("$_url/login", data: data);
       log(response.data.toString());
 
       return response.data;

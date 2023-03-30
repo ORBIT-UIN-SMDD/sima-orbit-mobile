@@ -73,8 +73,8 @@ class LoginPage extends StatelessWidget {
                       color: PrimaryColor,
                       controller: state.btnLoginController,
                       onPressed: () {
-                        // state.Login(context);
-                        context.goNamed("home_page");
+                        state.Login(context);
+                        // context.goNamed("home_page");
                         ;
                       },
                     ),

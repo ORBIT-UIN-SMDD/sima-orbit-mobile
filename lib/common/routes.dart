@@ -5,7 +5,9 @@ import 'package:sima_orbit_mobile/pages/auth/login_page.dart';
 import 'package:sima_orbit_mobile/pages/auth/register_page.dart';
 import 'package:sima_orbit_mobile/pages/bottom_navigation.dart';
 import 'package:sima_orbit_mobile/pages/camera.dart';
+import 'package:sima_orbit_mobile/pages/informasi_page.dart';
 import 'package:sima_orbit_mobile/pages/intro_page.dart';
+import 'package:sima_orbit_mobile/pages/notification_page.dart';
 import 'package:sima_orbit_mobile/pages/onboarding_page.dart';
 
 final GoRouter routes = GoRouter(
@@ -58,12 +60,27 @@ final GoRouter routes = GoRouter(
       ],
     ),
     GoRoute(
-      path: '/',
-      name: "home_page",
-      builder: (BuildContext context, GoRouterState state) {
-        return BottomNavigation();
-      },
-    ),
+        path: '/',
+        name: "home_page",
+        builder: (BuildContext context, GoRouterState state) {
+          return BottomNavigation();
+        },
+        routes: [
+          GoRoute(
+            path: 'notifikasi',
+            name: "notifikasi",
+            builder: (BuildContext context, GoRouterState state) {
+              return NotificationPage();
+            },
+          ),
+          GoRoute(
+            path: 'informasi',
+            name: "informasi",
+            builder: (BuildContext context, GoRouterState state) {
+              return InformasiPage();
+            },
+          )
+        ]),
   ],
   initialLocation: "/autoLogin",
   debugLogDiagnostics: true,

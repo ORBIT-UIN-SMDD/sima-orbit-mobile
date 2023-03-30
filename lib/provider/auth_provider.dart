@@ -393,10 +393,7 @@ class AuthProvider extends ChangeNotifier {
     }
 
     if (nimLoginE == '' && passLoginE == '') {
-      var LoginObject = {
-        "email": nimLoginC.text,
-        "password": passRegisterC.text
-      };
+      var LoginObject = {"nim": nimLoginC.text, "password": passLoginC.text};
       var res = await ApiServices().LoginEndpoint(LoginObject);
       if (res["status"] == "success") {
         btnLoginController.success();

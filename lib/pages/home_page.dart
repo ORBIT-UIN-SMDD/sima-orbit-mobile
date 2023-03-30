@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sima_orbit_mobile/const/color.dart';
 
 class HomePage extends StatelessWidget {
@@ -41,10 +42,13 @@ class HomePage extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         fontSize: 16),
                   ),
-                  trailing: Icon(
-                    Icons.notifications,
+                  trailing: IconButton(
+                    icon: Icon(
+                      Icons.notifications,
+                      size: 30,
+                    ),
                     color: whiteColor,
-                    size: 30,
+                    onPressed: () => context.goNamed("notifikasi"),
                   ),
                 ),
               ),
@@ -120,18 +124,21 @@ class HomePage extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            Container(
-                              width: 70,
-                              height: 70,
-                              child: Icon(
-                                Icons.web,
-                                size: 40,
-                                color: Color(0xff2ECC71),
+                            InkWell(
+                              onTap: () => context.goNamed("informasi"),
+                              child: Container(
+                                width: 70,
+                                height: 70,
+                                child: Icon(
+                                  Icons.web,
+                                  size: 40,
+                                  color: Color(0xff2ECC71),
+                                ),
+                                decoration: BoxDecoration(
+                                    color: Color(0xffD5F5E3),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
                               ),
-                              decoration: BoxDecoration(
-                                  color: Color(0xffD5F5E3),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
                             ),
                             SizedBox(height: 5),
                             Text(

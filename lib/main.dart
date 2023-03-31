@@ -7,6 +7,8 @@ import 'package:sima_orbit_mobile/firebase_options.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:sima_orbit_mobile/provider/auth_provider.dart';
 import 'package:sima_orbit_mobile/provider/bottom_navigation_provider.dart';
+import 'package:sima_orbit_mobile/provider/pengumuman_provider.dart';
+import 'package:sima_orbit_mobile/provider/profile_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,9 +56,14 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(
           create: (context) => BottomNavigationProvider(),
         ),
+        ChangeNotifierProvider(
+            create: (context) => ProfileProvider()..GetProfile()),
+        ChangeNotifierProvider<PengumumanProvider>(
+          create: (context) => PengumumanProvider()..getPengumuman(),
+        )
       ],
       child: MaterialApp.router(
-        title: "SIMAOrbit Mobile",
+        title: "SIMA-ORBIT Mobile",
         theme: ThemeData(
             textTheme:
                 GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)),

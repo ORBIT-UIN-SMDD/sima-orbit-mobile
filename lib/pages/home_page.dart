@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:sima_orbit_mobile/const/color.dart';
+import 'package:sima_orbit_mobile/provider/profile_provider.dart';
+import 'package:skeletons/skeletons.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -35,13 +38,16 @@ class HomePage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 18),
                   ),
-                  subtitle: Text(
-                    "Fajri Rinaldi Chan",
-                    style: TextStyle(
-                        color: whiteColor,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16),
-                  ),
+                  subtitle:
+                      Provider.of<ProfileProvider>(context).isLoading == false
+                          ? Text(
+                              "Fajri Rinaldi Chan",
+                              style: TextStyle(
+                                  color: whiteColor,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16),
+                            )
+                          : Text("-"),
                   trailing: IconButton(
                     icon: Icon(
                       Icons.notifications,
@@ -228,42 +234,45 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 15),
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 15, right: 15, top: 10),
-                              child: Row(
-                                children: [
-                                  Image.asset("assets/icons/penugasan.png"),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    "Penugasan",
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 18),
-                                  ),
-                                ],
+                      InkWell(
+                        onTap: () => context.goNamed("penugasan"),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 15, right: 15, top: 10),
+                                child: Row(
+                                  children: [
+                                    Image.asset("assets/icons/penugasan.png"),
+                                    SizedBox(width: 10),
+                                    Text(
+                                      "Penugasan",
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(15),
-                              decoration: BoxDecoration(
-                                  color: Color(0xffBABBCA),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
-                              child: Text(
-                                "Berisi Monitoring Penugasan, SK tugas, absensi, pelaporan",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 13),
-                              ),
-                            )
-                          ],
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(15),
+                                decoration: BoxDecoration(
+                                    color: Color(0xffBABBCA),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
+                                child: Text(
+                                  "Berisi Monitoring Penugasan, SK tugas, absensi, pelaporan",
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 13),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(height: 15),

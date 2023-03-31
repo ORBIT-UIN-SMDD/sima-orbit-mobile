@@ -370,8 +370,8 @@ class AuthProvider extends ChangeNotifier {
   final TextEditingController nimLoginC = TextEditingController();
   final TextEditingController passLoginC = TextEditingController();
 
-  String nimLoginE = '';
-  String passLoginE = '';
+  String? nimLoginE;
+  String? passLoginE;
 
   Future<void> Login(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
@@ -435,6 +435,12 @@ class AuthProvider extends ChangeNotifier {
         },
       );
     }
+  }
+
+  bool isFinishedLogout = false;
+  void FinishLogout() {
+    isFinishedLogout = true;
+    notifyListeners();
   }
 
   Future<void> logout(BuildContext context) async {

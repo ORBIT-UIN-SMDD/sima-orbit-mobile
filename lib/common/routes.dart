@@ -7,8 +7,10 @@ import 'package:sima_orbit_mobile/pages/bottom_navigation.dart';
 import 'package:sima_orbit_mobile/pages/camera.dart';
 import 'package:sima_orbit_mobile/pages/informasi_page.dart';
 import 'package:sima_orbit_mobile/pages/intro_page.dart';
-import 'package:sima_orbit_mobile/pages/notification_page.dart';
+import 'package:sima_orbit_mobile/pages/pengumuman_page.dart';
 import 'package:sima_orbit_mobile/pages/onboarding_page.dart';
+import 'package:sima_orbit_mobile/pages/penugasan_detail_page.dart';
+import 'package:sima_orbit_mobile/pages/penugasan_page.dart';
 
 final GoRouter routes = GoRouter(
   routes: <RouteBase>[
@@ -70,7 +72,7 @@ final GoRouter routes = GoRouter(
             path: 'notifikasi',
             name: "notifikasi",
             builder: (BuildContext context, GoRouterState state) {
-              return NotificationPage();
+              return PengumumanPage();
             },
           ),
           GoRoute(
@@ -79,7 +81,22 @@ final GoRouter routes = GoRouter(
             builder: (BuildContext context, GoRouterState state) {
               return InformasiPage();
             },
-          )
+          ),
+          GoRoute(
+              path: 'penugasan',
+              name: "penugasan",
+              builder: (BuildContext context, GoRouterState state) {
+                return PenugasanPage();
+              },
+              routes: [
+                GoRoute(
+                  path: 'detail',
+                  name: "detail_penugasan",
+                  builder: (BuildContext context, GoRouterState state) {
+                    return PenugasanDetailPage();
+                  },
+                ),
+              ])
         ]),
   ],
   initialLocation: "/autoLogin",

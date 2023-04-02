@@ -18,6 +18,7 @@ class LoginPage extends StatelessWidget {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(height: 20),
                 DropShadowImage(
                   borderRadius: 5,
                   //@blurRadius if not defined default value is
@@ -37,7 +38,8 @@ class LoginPage extends StatelessWidget {
                       fontWeight: FontWeight.w100),
                 ),
                 Text(
-                  "SISTEM INFORMASI MANAJEMEN ORBIT",
+                  "SISTEM INFORMASI MANAJEMEN \nDAN ADMINISTRASI ORBIT",
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 80),

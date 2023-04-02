@@ -8,6 +8,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:sima_orbit_mobile/provider/agenda_provider.dart';
 import 'package:sima_orbit_mobile/provider/auth_provider.dart';
 import 'package:sima_orbit_mobile/provider/bottom_navigation_provider.dart';
+import 'package:sima_orbit_mobile/provider/kompetensi_provider.dart';
 import 'package:sima_orbit_mobile/provider/pengumuman_provider.dart';
 import 'package:sima_orbit_mobile/provider/penugasan_provider.dart';
 import 'package:sima_orbit_mobile/provider/profile_provider.dart';
@@ -68,6 +69,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider<AgendaProvider>(
           create: (context) => AgendaProvider()..getAgenda(),
+        ),
+        ChangeNotifierProvider<KompetensiProvider>(
+          create: (context) => KompetensiProvider()..getKompetensi(),
         ),
       ],
       child: MaterialApp.router(

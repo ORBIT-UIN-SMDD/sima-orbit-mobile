@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
                   subtitle:
                       Provider.of<ProfileProvider>(context).isLoading == false
                           ? Text(
-                              "Fajri Rinaldi Chan",
+                              Provider.of<ProfileProvider>(context).profile!.profile.nama,
                               style: TextStyle(
                                   color: whiteColor,
                                   fontWeight: FontWeight.w600,
@@ -195,42 +195,45 @@ class HomePage extends StatelessWidget {
                   SizedBox(height: 10),
                   Column(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 15, right: 15, top: 10),
-                              child: Row(
-                                children: [
-                                  Image.asset("assets/icons/kompetensi.png"),
-                                  SizedBox(width: 10),
-                                  Text(
-                                    "Kompetensi",
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 18),
-                                  ),
-                                ],
+                      InkWell(
+                        onTap: () => context.goNamed("kompetensi"),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 15, right: 15, top: 10),
+                                child: Row(
+                                  children: [
+                                    Image.asset("assets/icons/kompetensi.png"),
+                                    SizedBox(width: 10),
+                                    Text(
+                                      "Kompetensi",
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(15),
-                              decoration: BoxDecoration(
-                                  color: Color(0xffBABBCA),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
-                              child: Text(
-                                "Berisi tentang Penilaian diri dan penilaian Kompetensi bagi anggota ORBIT",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 13),
-                              ),
-                            )
-                          ],
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(15),
+                                decoration: BoxDecoration(
+                                    color: Color(0xffBABBCA),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
+                                child: Text(
+                                  "Berisi tentang Penilaian diri dan penilaian Kompetensi bagi anggota ORBIT",
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 13),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(height: 15),

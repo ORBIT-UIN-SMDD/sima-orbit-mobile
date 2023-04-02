@@ -366,7 +366,7 @@ class RegisterPage extends StatelessWidget {
                       hintText: "Enter Your Password",
                       isPassword: true,
                     ),
-                    SizedBox(height: 12),
+                    SizedBox(height: 30),
                     RoundedLoadingButton(
                       child: Text('Register',
                           style: TextStyle(color: Colors.white)),
@@ -395,7 +395,8 @@ class RegisterPage extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )
+                    ),
+                    SizedBox(height: 30)
                   ],
                 );
               },

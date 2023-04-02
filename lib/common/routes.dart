@@ -8,6 +8,8 @@ import 'package:sima_orbit_mobile/pages/bottom_navigation.dart';
 import 'package:sima_orbit_mobile/pages/camera.dart';
 import 'package:sima_orbit_mobile/pages/informasi_page.dart';
 import 'package:sima_orbit_mobile/pages/intro_page.dart';
+import 'package:sima_orbit_mobile/pages/kompetensi_detail_page.dart';
+import 'package:sima_orbit_mobile/pages/kompetensi_page.dart';
 import 'package:sima_orbit_mobile/pages/pengumuman_page.dart';
 import 'package:sima_orbit_mobile/pages/onboarding_page.dart';
 import 'package:sima_orbit_mobile/pages/penugasan_detail_page.dart';
@@ -95,6 +97,21 @@ final GoRouter routes = GoRouter(
                   name: "detail_penugasan",
                   builder: (BuildContext context, GoRouterState state) {
                     return PenugasanDetailPage();
+                  },
+                ),
+              ]),
+          GoRoute(
+              path: 'kompetensi',
+              name: "kompetensi",
+              builder: (BuildContext context, GoRouterState state) {
+                return KompetensiPage();
+              },
+              routes: [
+                GoRoute(
+                  path: 'detail',
+                  name: "detail_kompetensi",
+                  builder: (BuildContext context, GoRouterState state) {
+                    return KompetensiDetailPage();
                   },
                 ),
               ]),

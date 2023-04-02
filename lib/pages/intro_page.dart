@@ -20,7 +20,8 @@ class IntroPage extends StatelessWidget {
                     width: 250,
                   ),
                   Text(
-                    "SISTEM INFORMASI MANAJEMEN ORBIT",
+                    "SISTEM INFORMASI MANAJEMEN \nDAN ADMINISTRASI ORBIT",
+                    textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ],

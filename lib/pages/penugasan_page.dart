@@ -60,7 +60,7 @@ class PenugasanPage extends StatelessWidget {
                             itemBuilder: (context, index) {
                               return InkWell(
                                 onTap: () =>
-                                    context.goNamed("detail_penugasan"),
+                                    state.toDetailPengurus(context, index),
                                 child: Container(
                                   padding: EdgeInsets.all(15),
                                   decoration: BoxDecoration(

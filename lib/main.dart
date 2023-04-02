@@ -8,6 +8,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:sima_orbit_mobile/provider/auth_provider.dart';
 import 'package:sima_orbit_mobile/provider/bottom_navigation_provider.dart';
 import 'package:sima_orbit_mobile/provider/pengumuman_provider.dart';
+import 'package:sima_orbit_mobile/provider/penugasan_provider.dart';
 import 'package:sima_orbit_mobile/provider/profile_provider.dart';
 
 Future<void> main() async {
@@ -60,6 +61,9 @@ class _MyAppState extends State<MyApp> {
             create: (context) => ProfileProvider()..GetProfile()),
         ChangeNotifierProvider<PengumumanProvider>(
           create: (context) => PengumumanProvider()..getPengumuman(),
+        ),
+        ChangeNotifierProvider<PenugasanProvider>(
+          create: (context) => PenugasanProvider()..getPenugasan(),
         )
       ],
       child: MaterialApp.router(

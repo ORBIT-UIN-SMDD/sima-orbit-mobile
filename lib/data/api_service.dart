@@ -135,4 +135,28 @@ class ApiServices {
       }
     }
   }
+
+  Future PenugasanEndpoint() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+
+    log("$_url/penugasan");
+    try {
+      var response = await dio.get("$_url/penugasan",
+          options: Options(headers: {"auth-token": token}));
+      log(response.data.toString());
+
+      return response.data;
+    } on DioError catch (e) {
+      log(e.toString());
+      if (e.response!.statusCode == 400) {
+        return e.response?.data;
+      } else {
+        return {
+          "status": "failed",
+          "message": "Terjadi Kesalahan (Error : ${e.toString()})"
+        };
+      }
+    }
+  }
 }

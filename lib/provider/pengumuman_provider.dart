@@ -9,7 +9,13 @@ class PengumumanProvider extends ChangeNotifier {
   void getPengumuman() async {
     var result = await ApiServices().PengumumanEndpoint();
     pengumuman = Pengumuman.fromJson(result);
-    isLoading == false;
+    isLoading = false;
+    notifyListeners();
+  }
+  Future getPengumumanAsync() async {
+    var result = await ApiServices().PengumumanEndpoint();
+    pengumuman = Pengumuman.fromJson(result);
+    isLoading = false;
     notifyListeners();
   }
 }

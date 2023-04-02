@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:sima_orbit_mobile/const/color.dart';
+import 'package:sima_orbit_mobile/provider/penugasan_provider.dart';
+import 'package:skeletons/skeletons.dart';
 
 class PenugasanPage extends StatelessWidget {
   const PenugasanPage({super.key});
@@ -48,64 +51,103 @@ class PenugasanPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15),
-              InkWell(
-                onTap: () => context.goNamed("detail_penugasan"),
-                child: Container(
-                  padding: EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                      color: Color(0xffEBEBEF),
-                      borderRadius: BorderRadius.circular(30)),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.circle,
-                        size: 20,
-                        color: Colors.green,
-                      ),
-                      SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Kepanitiaan Mubes XII UKM ORBIT",
-                              style: TextStyle(fontSize: 16)),
-                          Text("Sebagai Ketupat",
-                              style: TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.bold)),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.calendar_month,
-                                color: Colors.grey,
-                                size: 20,
-                              ),
-                              SizedBox(width: 10),
-                              Text("7 Januari 2022",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.grey,
-                                  )),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.location_on,
-                                color: Colors.grey,
-                                size: 20,
-                              ),
-                              SizedBox(width: 10),
-                              Text("Sekretariat SEMA-U",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.grey,
-                                  )),
-                            ],
+              Expanded(
+                child: Consumer<PenugasanProvider>(
+                  builder: (context, state, child) {
+                    return state.isLoading == false
+                        ? ListView.builder(
+                            itemCount: state.Penugasan!.penugasan.length,
+                            itemBuilder: (context, index) {
+                              return InkWell(
+                                onTap: () =>
+                                    context.goNamed("detail_penugasan"),
+                                child: Container(
+                                  padding: EdgeInsets.all(15),
+                                  decoration: BoxDecoration(
+                                      color: Color(0xffEBEBEF),
+                                      borderRadius: BorderRadius.circular(30)),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        Icons.circle,
+                                        size: 20,
+                                        color: Colors.green,
+                                      ),
+                                      SizedBox(width: 10),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                              state.Penugasan!.penugasan[index]
+                                                  .penugasan.penugasanNama,
+                                              style: TextStyle(fontSize: 16)),
+                                          Text(
+                                              state.Penugasan!.penugasan[index]
+                                                  .bidangTugas,
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.bold)),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.calendar_month,
+                                                color: Colors.grey,
+                                                size: 20,
+                                              ),
+                                              SizedBox(width: 10),
+                                              Text(
+                                                  state
+                                                          .Penugasan!
+                                                          .penugasan[index]
+                                                          .penugasan
+                                                          .penugasanMulai
+                                                          .toString() +
+                                                      " - " +
+                                                      state
+                                                          .Penugasan!
+                                                          .penugasan[index]
+                                                          .penugasan
+                                                          .penugasanSelesai
+                                                          .toString(),
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.grey,
+                                                  )),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.location_on,
+                                                color: Colors.grey,
+                                                size: 20,
+                                              ),
+                                              SizedBox(width: 10),
+                                              Text(
+                                                  state
+                                                      .Penugasan!
+                                                      .penugasan[index]
+                                                      .penugasan
+                                                      .penugasanTempat,
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.grey,
+                                                  )),
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
                           )
-                        ],
-                      )
-                    ],
-                  ),
+                        : SkeletonListView();
+                  },
                 ),
               )
             ],

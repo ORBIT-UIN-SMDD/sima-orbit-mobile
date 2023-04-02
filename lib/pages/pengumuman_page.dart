@@ -1,3 +1,4 @@
+import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sima_orbit_mobile/const/color.dart';
@@ -21,60 +22,84 @@ class PengumumanPage extends StatelessWidget {
               child: Consumer<PengumumanProvider>(
                 builder: (context, state, child) {
                   return state.isLoading == false
-                      ? Column(
-                          children: [
-                            Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              color: Color(0xffECF0F1),
-                              child: Container(
-                                  height: 90,
-                                  width: double.infinity,
-                                  child: Row(
-                                    children: [
-                                      Card(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                        ),
-                                        color: Color(0xffFDEBD0),
-                                        child: Container(
-                                          height: 75,
-                                          width: 50,
-                                          child: Icon(
-                                            Icons.notifications,
-                                            size: 35,
-                                            color: Color(0xffF39C12),
+                      ? CustomRefreshIndicator(
+                          /// delegate with configuration
+                          builder: MaterialIndicatorDelegate(
+                            builder: (context, controller) {
+                              return Icon(
+                                Icons.local_fire_department,
+                                color: PrimaryColor,
+                                size: 30,
+                              );
+                            },
+                          ),
+                          onRefresh: () async =>
+                              await state.getPengumumanAsync(),
+
+                          child: ListView.builder(
+                            itemCount: state.pengumuman!.pengumuman.length,
+                            itemBuilder: (context, index) {
+                              return Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                color: Color(0xffECF0F1),
+                                child: Container(
+                                    height: 90,
+                                    width: double.infinity,
+                                    child: Row(
+                                      children: [
+                                        Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
                                           ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 10),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "Notifikasi",
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black),
-                                          ),
-                                          Text(
-                                            "Parkir Success, Lokasi Parkir mu B1",
-                                            style: TextStyle(
-                                              fontSize: 14,
+                                          color: Color(0xffFDEBD0),
+                                          child: Container(
+                                            height: 75,
+                                            width: 50,
+                                            child: Icon(
+                                              Icons.notifications,
+                                              size: 35,
+                                              color: Color(0xffF39C12),
                                             ),
                                           ),
-                                        ],
-                                      )
-                                    ],
-                                  )),
-                            ),
-                          ],
+                                        ),
+                                        SizedBox(width: 10),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                state
+                                                    .pengumuman!
+                                                    .pengumuman[index]
+                                                    .pengumumanJudul,
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black),
+                                              ),
+                                              Text(
+                                                state
+                                                    .pengumuman!
+                                                    .pengumuman[index]
+                                                    .pengumumanDeskripsi,
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    )),
+                              );
+                            },
+                          ),
                         )
                       : SkeletonListView();
                 },

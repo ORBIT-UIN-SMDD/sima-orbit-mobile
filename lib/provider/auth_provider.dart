@@ -399,7 +399,8 @@ class AuthProvider extends ChangeNotifier {
         btnLoginController.success();
         notifyListeners();
         await prefs.setString('token', res["token"]);
-        print("TOKEN AUTHORIZATION : " + res["token"]);
+        await prefs.setString('status', res["tipe"]);
+        // print("TOKEN AUTHORIZATION : " + res["token"]);
         context.goNamed("home_page");
       } else {
         btnLoginController.error();
@@ -446,6 +447,7 @@ class AuthProvider extends ChangeNotifier {
   Future<void> logout(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('token');
+    await prefs.remove('status');
     context.goNamed("onboarding");
   }
 }

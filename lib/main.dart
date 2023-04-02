@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:sima_orbit_mobile/common/routes.dart';
 import 'package:sima_orbit_mobile/firebase_options.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:sima_orbit_mobile/provider/agenda_provider.dart';
 import 'package:sima_orbit_mobile/provider/auth_provider.dart';
 import 'package:sima_orbit_mobile/provider/bottom_navigation_provider.dart';
 import 'package:sima_orbit_mobile/provider/pengumuman_provider.dart';
@@ -64,7 +65,10 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider<PenugasanProvider>(
           create: (context) => PenugasanProvider()..getPenugasan(),
-        )
+        ),
+        ChangeNotifierProvider<AgendaProvider>(
+          create: (context) => AgendaProvider()..getAgenda(),
+        ),
       ],
       child: MaterialApp.router(
         title: "SIMA-ORBIT Mobile",

@@ -48,10 +48,10 @@ class AgendaElement {
         id: json["id"],
         agendaNama: json["agenda_nama"],
         agendaDeskripsi: json["agenda_deskripsi"],
-        agendaMulai:
-            DateFormat.yMMMEd().format(DateTime.parse(json["agenda_mulai"])),
-        agendaSelesai:
-            DateFormat.yMMMEd().format(DateTime.parse(json["agenda_selesai"])),
+        agendaMulai: DateFormat.yMMMEd("in_ID")
+            .format(DateTime.parse(json["agenda_mulai"])),
+        agendaSelesai: DateFormat.yMMMEd("in_ID")
+            .format(DateTime.parse(json["agenda_selesai"])),
         agendaTempat: json["agenda_tempat"],
         agendaWaktu: json["agenda_waktu"],
         agendaKeterangan: json["agenda_keterangan"],

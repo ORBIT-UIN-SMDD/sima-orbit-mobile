@@ -14,6 +14,9 @@ class ProfileProvider extends ChangeNotifier {
   ProfileAlumni? profileAlumni;
 
   String foto = "https://sima.orbituinbkt.com/assets/img/avatars/1.png";
+  String nama = "";
+  int nim = 0;
+
   String? statusPref = "";
 
   Future<void> GetProfile() async {
@@ -27,16 +30,23 @@ class ProfileProvider extends ChangeNotifier {
       profilePengurus = ProfilePengurus.fromJson(result);
       foto =
           "https://sima.orbituinbkt.com/profile/pengurus/${profilePengurus!.profile.foto}";
+      nama = profilePengurus!.profile.nama;
+      nim = profilePengurus!.profile.nim;
+
       notifyListeners();
     } else if (statusPref == 'anggota') {
       profileAnggota = ProfileAnggota.fromJson(result);
       foto =
           "https://sima.orbituinbkt.com/profile/anggota/${profileAnggota!.profile.foto}";
+      nama = profileAnggota!.profile.nama;
+      nim = profileAnggota!.profile.nim;
       notifyListeners();
     } else if (statusPref == 'alumni') {
       profileAlumni = ProfileAlumni.fromJson(result);
       foto =
           "https://sima.orbituinbkt.com/profile/alumni/${profileAlumni!.profile.foto}";
+      nama = profileAlumni!.profile.nama;
+      nim = profileAlumni!.profile.nim;
       notifyListeners();
     }
     log(result.toString());

@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                       ),
                       subtitle: state.isLoading == false
                           ? Text(
-                              state.profilePengurus!.profile.nama,
+                              state.nama,
                               style: TextStyle(
                                   color: whiteColor,
                                   fontWeight: FontWeight.w600,

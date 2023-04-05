@@ -386,8 +386,8 @@ class AuthProvider extends ChangeNotifier {
 
     if (passLoginC.text == "") {
       passLoginE = "Field Ini Harus Diisi";
-    } else if (passLoginC.text.length < 8) {
-      passLoginE = "password harus lebih dari 8 karakter";
+    } else if (passLoginC.text.length < 7) {
+      passLoginE = "password harus lebih dari 7 karakter";
     } else {
       passLoginE = "";
     }

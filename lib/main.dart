@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 import 'package:sima_orbit_mobile/common/routes.dart';
 import 'package:sima_orbit_mobile/firebase_options.dart';
@@ -14,6 +15,7 @@ import 'package:sima_orbit_mobile/provider/penugasan_provider.dart';
 import 'package:sima_orbit_mobile/provider/profile_provider.dart';
 
 Future<void> main() async {
+  initializeDateFormatting("in_ID");
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

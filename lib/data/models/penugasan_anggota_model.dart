@@ -1,7 +1,5 @@
-import 'package:intl/intl.dart';
-
-class PenugasanPengurus {
-  PenugasanPengurus({
+class PenugasanAnggota {
+  PenugasanAnggota({
     required this.status,
     required this.message,
     required this.penugasan,
@@ -11,8 +9,8 @@ class PenugasanPengurus {
   final String message;
   final List<PenugasanElement> penugasan;
 
-  factory PenugasanPengurus.fromJson(Map<String, dynamic> json) =>
-      PenugasanPengurus(
+  factory PenugasanAnggota.fromJson(Map<String, dynamic> json) =>
+      PenugasanAnggota(
         status: json["status"],
         message: json["message"],
         penugasan: List<PenugasanElement>.from(
@@ -27,7 +25,7 @@ class PenugasanElement {
     required this.nim,
     required this.bidangTugas,
     required this.ditambahkanPada,
-    required this.penguru,
+    required this.anggotum,
     required this.penugasan,
   });
 
@@ -36,7 +34,7 @@ class PenugasanElement {
   final int nim;
   final String bidangTugas;
   final DateTime ditambahkanPada;
-  final Penguru penguru;
+  final Anggotum anggotum;
   final PenugasanPenugasan penugasan;
 
   factory PenugasanElement.fromJson(Map<String, dynamic> json) =>
@@ -46,13 +44,13 @@ class PenugasanElement {
         nim: json["nim"],
         bidangTugas: json["bidang_tugas"],
         ditambahkanPada: DateTime.parse(json["ditambahkan_pada"]),
-        penguru: Penguru.fromJson(json["penguru"]),
+        anggotum: Anggotum.fromJson(json["anggotum"]),
         penugasan: PenugasanPenugasan.fromJson(json["penugasan"]),
       );
 }
 
-class Penguru {
-  Penguru({
+class Anggotum {
+  Anggotum({
     required this.nim,
     required this.foto,
     required this.nama,
@@ -66,7 +64,7 @@ class Penguru {
     required this.noTelp,
     required this.email,
     required this.password,
-    required this.periode,
+    required this.tanggalMendaftar,
     required this.active,
   });
 
@@ -83,10 +81,10 @@ class Penguru {
   final String noTelp;
   final String email;
   final String password;
-  final int periode;
+  final DateTime tanggalMendaftar;
   final bool active;
 
-  factory Penguru.fromJson(Map<String, dynamic> json) => Penguru(
+  factory Anggotum.fromJson(Map<String, dynamic> json) => Anggotum(
         nim: json["nim"],
         foto: json["foto"],
         nama: json["nama"],
@@ -100,7 +98,7 @@ class Penguru {
         noTelp: json["no_telp"],
         email: json["email"],
         password: json["password"],
-        periode: json["periode"],
+        tanggalMendaftar: DateTime.parse(json["tanggal_mendaftar"]),
         active: json["active"],
       );
 }
@@ -123,8 +121,8 @@ class PenugasanPenugasan {
   final int penugasanId;
   final String penugasanNama;
   final String penugasanDeskripsi;
-  final String penugasanMulai;
-  final String penugasanSelesai;
+  final DateTime penugasanMulai;
+  final DateTime penugasanSelesai;
   final String penugasanTempat;
   final String penugasanWaktu;
   final String penugasanOleh;
@@ -132,16 +130,13 @@ class PenugasanPenugasan {
   final String penugasanSk;
   final DateTime penugasanDibuat;
 
-  // final f = new DateFormat('yyyy-MM-dd hh:mm');
   factory PenugasanPenugasan.fromJson(Map<String, dynamic> json) =>
       PenugasanPenugasan(
         penugasanId: json["penugasan_id"],
         penugasanNama: json["penugasan_nama"],
         penugasanDeskripsi: json["penugasan_deskripsi"],
-        penugasanMulai: DateFormat.yMMMEd("in_ID")
-            .format(DateTime.parse(json["penugasan_mulai"])),  
-        penugasanSelesai: DateFormat.yMMMEd("in_ID")
-            .format(DateTime.parse(json["penugasan_selesai"])),
+        penugasanMulai: DateTime.parse(json["penugasan_mulai"]),
+        penugasanSelesai: DateTime.parse(json["penugasan_selesai"]),
         penugasanTempat: json["penugasan_tempat"],
         penugasanWaktu: json["penugasan_waktu"],
         penugasanOleh: json["penugasan_oleh"],

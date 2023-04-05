@@ -8,7 +8,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Informasi"),
+        title: Text("Tentang Aplikasi"),
         centerTitle: true,
         backgroundColor: PrimaryColor,
       ),
@@ -26,9 +26,9 @@ class AboutPage extends StatelessWidget {
                 width: 200,
               ),
               Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia congue leo vel accumsan. Suspendisse pellentesque odio vitae lorem laoreet, at viverra diam cursus. Integer vehicula diam fermentum diam bibendum rhoncus. Curabitur tempor est at nunc semper maximus. Cras convallis libero vitae dolor congue, nec tincidunt nulla placerat. Ut malesuada dolor vitae nisl accumsan elementum. Nam nec odio vel lacus venenatis fermentum ac sit amet sem.",
+                "Sistem Informasi Manajemen dan Administrasi (SIMA) ORBIT adalah aplikasi yang dirancang untuk membantu manajemen dan administrasi UKM Organisasi Berbasis IT (ORBIT). Aplikasi ini dapat digunakan untuk berbagai macam tujuan, termasuk mengelola data pengurus, alumni dan anggota serta mengelola kegiatan yang diadakan. Selain itu Sistem Informasi Manajemen dan Administrasi (SIMA) ORBIT juga menyediakan berbagai macam laporan dan data yang berguna bagi manajemen dalam mengambil keputusan. Aplikasi ini dirancang dengan antarmuka yang mudah digunakan dan dapat diakses dari mana saja dengan menggunakan perangkat yang terhubung ke internet.",
                 textAlign: TextAlign.center,
-                style: TextStyle(),
+                style: TextStyle(fontSize: 13),
               ),
               SizedBox(height: 10),
               Text(
@@ -52,7 +52,7 @@ class AboutPage extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           backgroundImage: NetworkImage(
-                              "https://mediahavefun.com/wp-content/uploads/2018/03/DYgZIHaVwAAbAPt.jpg"),
+                              "https://sima.orbituinbkt.com/profile/pengurus/C9BD8B2D-3A09-4569-802A-377A7976EB4F.JPG"),
                           minRadius: 45,
                         ),
                         SizedBox(width: 20),
@@ -86,11 +86,11 @@ class AboutPage extends StatelessWidget {
                             Row(
                               children: [
                                 Image.asset(
-                                  "assets/icons/Instagram.png",
+                                  "assets/icons/whatsapp.png",
                                   width: 22,
                                 ),
                                 SizedBox(width: 7),
-                                Text("fajri_chan")
+                                Text("+62 896-1339-0766")
                               ],
                             )
                           ],
@@ -102,7 +102,7 @@ class AboutPage extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           backgroundImage: NetworkImage(
-                              "https://mediahavefun.com/wp-content/uploads/2018/03/DYgZIHaVwAAbAPt.jpg"),
+                              "https://sima.orbituinbkt.com/profile/pengurus/FBEE005D-FECF-48F6-9F0C-D45737A1FB4D.JPG"),
                           minRadius: 45,
                         ),
                         SizedBox(width: 20),
@@ -123,24 +123,24 @@ class AboutPage extends StatelessWidget {
                                 fontSize: 12,
                               ),
                             ),
+                            // Row(
+                            //   children: [
+                            //     Image.asset(
+                            //       "assets/icons/LinkedIn.png",
+                            //       width: 22,
+                            //     ),
+                            //     SizedBox(width: 7),
+                            //     Text("in/fajri-chan")
+                            //   ],
+                            // ),
                             Row(
                               children: [
                                 Image.asset(
-                                  "assets/icons/LinkedIn.png",
+                                  "assets/icons/whatsapp.png",
                                   width: 22,
                                 ),
                                 SizedBox(width: 7),
-                                Text("in/fajri-chan")
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Image.asset(
-                                  "assets/icons/Instagram.png",
-                                  width: 22,
-                                ),
-                                SizedBox(width: 7),
-                                Text("fajri_chan")
+                                Text("+62 852-1403-7086")
                               ],
                             )
                           ],
@@ -152,7 +152,7 @@ class AboutPage extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           backgroundImage: NetworkImage(
-                              "https://mediahavefun.com/wp-content/uploads/2018/03/DYgZIHaVwAAbAPt.jpg"),
+                              "https://sima.orbituinbkt.com/profile/pengurus/8C587B79-90A9-4213-8CE8-BAACE0B9C126.JPG"),
                           minRadius: 45,
                         ),
                         SizedBox(width: 20),
@@ -173,24 +173,24 @@ class AboutPage extends StatelessWidget {
                                 fontSize: 12,
                               ),
                             ),
+                            // Row(
+                            //   children: [
+                            //     Image.asset(
+                            //       "assets/icons/LinkedIn.png",
+                            //       width: 22,
+                            //     ),
+                            //     SizedBox(width: 7),
+                            //     Text("in/fajri-chan")
+                            //   ],
+                            // ),
                             Row(
                               children: [
                                 Image.asset(
-                                  "assets/icons/LinkedIn.png",
+                                  "assets/icons/whatsapp.png",
                                   width: 22,
                                 ),
                                 SizedBox(width: 7),
-                                Text("in/fajri-chan")
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Image.asset(
-                                  "assets/icons/Instagram.png",
-                                  width: 22,
-                                ),
-                                SizedBox(width: 7),
-                                Text("fajri_chan")
+                                Text("+62 852-7143-7720")
                               ],
                             )
                           ],

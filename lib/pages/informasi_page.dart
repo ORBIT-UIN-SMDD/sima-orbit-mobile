@@ -23,7 +23,7 @@ class InformasiPage extends StatelessWidget {
                 width: 300,
               ),
               Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lacinia congue leo vel accumsan. Suspendisse pellentesque odio vitae lorem laoreet, at viverra diam cursus. Integer vehicula diam fermentum diam bibendum rhoncus. Curabitur tempor est at nunc semper maximus. Cras convallis libero vitae dolor congue, nec tincidunt nulla placerat. Ut malesuada dolor vitae nisl accumsan elementum. Nam nec odio vel lacus venenatis fermentum ac sit amet sem.",
+                "Unit Kegiatan Mahasiswa Organisasi berbasis IT (UKM ORBIT) yang sebelumnya adalah organisasi komunitas belajar dari jurusan Pendidikan Teknik Informatika dan Komputer yang dibentuk dari usulan Bapak Dr.Supratman Zakir M.Pd, M.Kom, Bapak Sarwo Derta dan Bapak Febi Edwardi yang didirikan oleh angkatan 2012",
                 textAlign: TextAlign.center,
                 style: TextStyle(),
               ),

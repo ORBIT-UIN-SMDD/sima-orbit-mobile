@@ -44,7 +44,7 @@ class ProfilePage extends StatelessWidget {
                                   children: [
                                     state.isLoading == false
                                         ? Text(
-                                            state.profile!.profile.nama,
+                                            state.profilePengurus!.profile.nama,
                                             style: TextStyle(
                                                 fontSize: 20,
                                                 color: whiteColor),
@@ -56,7 +56,7 @@ class ProfilePage extends StatelessWidget {
                                                 color: whiteColor),
                                           ),
                                     Text(
-                                      "NIM. ${state.profile!.profile.nim}",
+                                      "NIM. ${state.profilePengurus!.profile.nim}",
                                       style: TextStyle(
                                           fontSize: 16,
                                           color: whiteColor,
@@ -78,7 +78,7 @@ class ProfilePage extends StatelessWidget {
                         color: PrimaryColor,
                       ),
                       title: Text('NIM'),
-                      subtitle: Text(state.profile!.profile.nim.toString()),
+                      subtitle: Text(state.profilePengurus!.profile.nim.toString()),
                       trailing: Icon(Icons.arrow_forward_ios),
                     ),
                     ListTile(
@@ -88,7 +88,7 @@ class ProfilePage extends StatelessWidget {
                         color: PrimaryColor,
                       ),
                       title: Text('Email'),
-                      subtitle: Text(state.profile!.profile.email),
+                      subtitle: Text(state.profilePengurus!.profile.email),
                       trailing: Icon(Icons.arrow_forward_ios),
                     ),
                     ListTile(
@@ -98,7 +98,7 @@ class ProfilePage extends StatelessWidget {
                         color: PrimaryColor,
                       ),
                       title: Text('Phone'),
-                      subtitle: Text(state.profile!.profile.noTelp),
+                      subtitle: Text(state.profilePengurus!.profile.noTelp),
                       trailing: Icon(Icons.arrow_forward_ios),
                     ),
                     ListTile(
@@ -118,7 +118,7 @@ class ProfilePage extends StatelessWidget {
                         color: PrimaryColor,
                       ),
                       title: Text('Bidang'),
-                      subtitle: Text(state.profile!.profile.bidang.bidangNama),
+                      subtitle: Text(state.profilePengurus!.profile.bidang.bidangNama),
                       trailing: Icon(Icons.arrow_forward_ios),
                     ),
                     ListTile(
@@ -128,7 +128,7 @@ class ProfilePage extends StatelessWidget {
                         color: PrimaryColor,
                       ),
                       title: Text('Tempat Lahir'),
-                      subtitle: Text(state.profile!.profile.tempatLahir),
+                      subtitle: Text(state.profilePengurus!.profile.tempatLahir),
                       trailing: Icon(Icons.arrow_forward_ios),
                     ),
                     ListTile(
@@ -139,7 +139,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                       title: Text('Tanggal Lahir'),
                       subtitle:
-                          Text(state.profile!.profile.tanggalLahir.toString()),
+                          Text(state.profilePengurus!.profile.tanggalLahir.toString()),
                       trailing: Icon(Icons.arrow_forward_ios),
                     ),
                     Padding(

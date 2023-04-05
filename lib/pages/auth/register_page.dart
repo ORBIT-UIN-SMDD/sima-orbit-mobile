@@ -177,7 +177,7 @@ class RegisterPage extends StatelessWidget {
                     TextFieldCustom(
                       maxLines: 3,
                       label: "Alamat",
-                      hintText: "Masukkan Tempat Lahir mu",
+                      hintText: "Masukkan Alamat Mu",
                       controller: state.alamatRegisterC,
                       errorText: state.alamatRegisterE,
                     ),
@@ -347,7 +347,7 @@ class RegisterPage extends StatelessWidget {
                     SizedBox(height: 12),
                     TextFieldCustom(
                       label: "No. Telepon",
-                      hintText: "Masukkan Tempat Lahir mu",
+                      hintText: "Masukkan No Telp mu",
                       controller: state.noTelpRegisterC,
                       errorText: state.noTelpRegisterE,
                     ),

@@ -4,8 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiServices {
-  String _url = "http://sima-backend.orbituinbkt.com/api";
-  // String _url = "http://54.255.24.46:3000/api";
+  // String _url = "http://sima-backend.orbituinbkt.com/api";
+  String _url = "http://54.255.24.46:3000/api";
   // String _url = "http://10.0.2.2:3000/api";
   // String _url = "http://192.168.100.123:3000/api";
   Dio dio = Dio();

@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:sima_orbit_mobile/const/color.dart';
 import 'package:sima_orbit_mobile/provider/profile_provider.dart';
-import 'package:skeletons/skeletons.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,49 +14,59 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              height: 90 + MediaQuery.of(context).viewPadding.top,
-              alignment: Alignment.bottomCenter,
-              decoration: BoxDecoration(
-                  color: PrimaryColor,
-                  borderRadius:
-                      BorderRadius.vertical(bottom: Radius.circular(40))),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                child: ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: AssetImage("assets/images/yupi.jpg"),
-                    radius: 30,
-                  ),
-                  title: Text(
-                    "Hello",
-                    style: TextStyle(
-                        color: whiteColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
-                  ),
-                  subtitle:
-                      Provider.of<ProfileProvider>(context).isLoading == false
+            Consumer<ProfileProvider>(
+              builder: (context, state, child) {
+                return Container(
+                  width: double.infinity,
+                  height: 90 + MediaQuery.of(context).viewPadding.top,
+                  alignment: Alignment.bottomCenter,
+                  decoration: BoxDecoration(
+                      color: PrimaryColor,
+                      borderRadius:
+                          BorderRadius.vertical(bottom: Radius.circular(40))),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    child: ListTile(
+                      leading: state.isLoading == false
+                          ? CircleAvatar(
+                              backgroundImage: NetworkImage(state.foto),
+                              backgroundColor: whiteColor,
+                              radius: 30,
+                            )
+                          : CircleAvatar(
+                              radius: 30,
+                              backgroundColor: whiteColor,
+                              child: CircularProgressIndicator(),
+                            ),
+                      title: Text(
+                        "Hello",
+                        style: TextStyle(
+                            color: whiteColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                      subtitle: state.isLoading == false
                           ? Text(
-                              Provider.of<ProfileProvider>(context).profile!.profile.nama,
+                              state.profilePengurus!.profile.nama,
                               style: TextStyle(
                                   color: whiteColor,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16),
                             )
                           : Text("-"),
-                  trailing: IconButton(
-                    icon: Icon(
-                      Icons.notifications,
-                      size: 30,
+                      trailing: IconButton(
+                        icon: Icon(
+                          Icons.notifications,
+                          size: 30,
+                        ),
+                        color: whiteColor,
+                        onPressed: () => context.goNamed("notifikasi"),
+                      ),
                     ),
-                    color: whiteColor,
-                    onPressed: () => context.goNamed("notifikasi"),
                   ),
-                ),
-              ),
+                );
+              },
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -156,30 +165,33 @@ class HomePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Column(
-                          children: [
-                            Container(
-                              width: 70,
-                              height: 70,
-                              child: Icon(
-                                Icons.info_outline,
-                                size: 40,
-                                color: Color(0xffE74C3C),
+                        InkWell(
+                          onTap: () => context.goNamed("about"),
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 70,
+                                height: 70,
+                                child: Icon(
+                                  Icons.info_outline,
+                                  size: 40,
+                                  color: Color(0xffE74C3C),
+                                ),
+                                decoration: BoxDecoration(
+                                    color: Color(0xffFADBD8),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
                               ),
-                              decoration: BoxDecoration(
-                                  color: Color(0xffFADBD8),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              "About",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
-                            ),
-                          ],
+                              SizedBox(height: 5),
+                              Text(
+                                "About",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14),
+                              ),
+                            ],
+                          ),
                         )
                       ],
                     ),

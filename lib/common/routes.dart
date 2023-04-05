@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sima_orbit_mobile/pages/about_page.dart';
 import 'package:sima_orbit_mobile/pages/agenda_page.dart';
 import 'package:sima_orbit_mobile/pages/auth/auto_login.dart';
 import 'package:sima_orbit_mobile/pages/auth/login_page.dart';
@@ -83,6 +84,13 @@ final GoRouter routes = GoRouter(
             name: "informasi",
             builder: (BuildContext context, GoRouterState state) {
               return InformasiPage();
+            },
+          ),
+          GoRoute(
+            path: 'about',
+            name: "about",
+            builder: (BuildContext context, GoRouterState state) {
+              return AboutPage();
             },
           ),
           GoRoute(

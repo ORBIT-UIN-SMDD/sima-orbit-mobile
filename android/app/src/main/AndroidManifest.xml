@@ -2,6 +2,7 @@
     package="com.gariskode.sima_orbit_mobile">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     
    <application
         android:label="sima_orbit_mobile"

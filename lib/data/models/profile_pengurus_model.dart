@@ -1,5 +1,5 @@
-class Profile {
-  Profile({
+class ProfilePengurus {
+  ProfilePengurus({
     required this.status,
     required this.message,
     required this.profile,
@@ -9,7 +9,7 @@ class Profile {
   final String message;
   final ProfileClass profile;
 
-  factory Profile.fromJson(Map<String, dynamic> json) => Profile(
+  factory ProfilePengurus.fromJson(Map<String, dynamic> json) => ProfilePengurus(
         status: json["status"],
         message: json["message"],
         profile: ProfileClass.fromJson(json["profile"]),

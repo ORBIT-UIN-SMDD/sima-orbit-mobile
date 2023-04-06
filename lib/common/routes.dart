@@ -15,9 +15,17 @@ import 'package:sima_orbit_mobile/pages/pengumuman_page.dart';
 import 'package:sima_orbit_mobile/pages/onboarding_page.dart';
 import 'package:sima_orbit_mobile/pages/penugasan_detail_page.dart';
 import 'package:sima_orbit_mobile/pages/penugasan_page.dart';
+import 'package:sima_orbit_mobile/pages/splash_screen.dart';
 
 final GoRouter routes = GoRouter(
   routes: <RouteBase>[
+    GoRoute(
+      path: '/splashscreen',
+      name: 'splash_screen',
+      builder: (BuildContext context, GoRouterState state) {
+        return SplashScreen();
+      },
+    ),
     GoRoute(
       path: '/autoLogin',
       name: 'auto_login',
@@ -132,7 +140,7 @@ final GoRouter routes = GoRouter(
           ),
         ]),
   ],
-  initialLocation: "/autoLogin",
+  initialLocation: "/splashscreen",
   debugLogDiagnostics: true,
   routerNeglect: true,
 );

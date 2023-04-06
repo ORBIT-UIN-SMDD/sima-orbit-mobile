@@ -74,7 +74,7 @@ class onBoardingPage extends StatelessWidget {
                 height: 480,
               ),
               Text(
-                'Data Keanggotaan',
+                'DATA KEANGGOTAAN',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: PrimaryColor,

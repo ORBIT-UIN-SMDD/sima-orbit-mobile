@@ -45,6 +45,8 @@ class _MyAppState extends State<MyApp> {
     FirebaseMessaging.instance.requestPermission();
     // Aktifkan subscribe ke topik notifikasi
     FirebaseMessaging.instance.subscribeToTopic('versi1');
+    FirebaseMessaging.instance.subscribeToTopic('agenda');
+    FirebaseMessaging.instance.subscribeToTopic('pengumuman');
     String? token = await FirebaseMessaging.instance.getToken();
     print(token);
   }

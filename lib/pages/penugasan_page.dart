@@ -12,7 +12,7 @@ class PenugasanPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Penugasan & Kepanitiaan"),
+          title: Text("Penugasan"),
           centerTitle: true,
           backgroundColor: PrimaryColor,
         ),
@@ -51,107 +51,191 @@ class PenugasanPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15),
-              Expanded(
-                child: Consumer<PenugasanProvider>(
-                  builder: (context, state, child) {
-                    return state.isLoading == false
-                        ? ListView.builder(
-                            itemCount: state.Penugasan!.penugasan.length,
-                            itemBuilder: (context, index) {
-                              return InkWell(
-                                onTap: () =>
-                                    state.toDetailPengurus(context, index),
-                                child: Container(
-                                  padding: EdgeInsets.all(15),
-                                  decoration: BoxDecoration(
-                                      color: Color(0xffEBEBEF),
-                                      borderRadius: BorderRadius.circular(30)),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Icon(
-                                        Icons.circle,
-                                        size: 20,
-                                        color: Colors.green,
-                                      ),
-                                      SizedBox(width: 10),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                              state.Penugasan!.penugasan[index]
-                                                  .penugasan.penugasanNama,
-                                              style: TextStyle(fontSize: 16)),
-                                          Text(
-                                              state.Penugasan!.penugasan[index]
-                                                  .bidangTugas,
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.bold)),
-                                          Row(
-                                            children: [
-                                              Icon(
-                                                Icons.calendar_month,
-                                                color: Colors.grey,
-                                                size: 20,
-                                              ),
-                                              SizedBox(width: 10),
-                                              Text(
-                                                  state
-                                                          .Penugasan!
-                                                          .penugasan[index]
-                                                          .penugasan
-                                                          .penugasanMulai
-                                                          .toString() +
-                                                      " - " +
-                                                      state
-                                                          .Penugasan!
-                                                          .penugasan[index]
-                                                          .penugasan
-                                                          .penugasanSelesai
-                                                          .toString(),
-                                                  style: TextStyle(
-                                                    fontSize: 12,
-                                                    color: Colors.grey,
-                                                  )),
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              Icon(
-                                                Icons.location_on,
-                                                color: Colors.grey,
-                                                size: 20,
-                                              ),
-                                              SizedBox(width: 10),
-                                              Text(
-                                                  state
-                                                      .Penugasan!
-                                                      .penugasan[index]
-                                                      .penugasan
-                                                      .penugasanTempat,
-                                                  style: TextStyle(
-                                                    fontSize: 12,
-                                                    color: Colors.grey,
-                                                  )),
-                                            ],
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          )
-                        : SkeletonListView();
-                  },
-                ),
+              Consumer<PenugasanProvider>(
+                builder: (context, state, child) {
+                  if (state.isLoading == false) {
+                    return Expanded(
+                      child: Column(
+                        children: [
+                          state.status == "pengurus"
+                              ? PenugasanPengurus(state)
+                              : Container(),
+                          state.status == "anggota"
+                              ? PenugasanAnggota(state)
+                              : Container()
+                        ],
+                      ),
+                    );
+                  } else {
+                    return Expanded(child: SkeletonListView());
+                  }
+                },
               )
             ],
           ),
         ));
+  }
+
+  Widget PenugasanPengurus(PenugasanProvider state) {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: state.penugasanPengurus!.penugasan.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () => state.toDetailPengurus(context, index),
+            child: Container(
+              padding: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                  color: Color(0xffEBEBEF),
+                  borderRadius: BorderRadius.circular(30)),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.circle,
+                    size: 20,
+                    color: Colors.green,
+                  ),
+                  SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                          state.penugasanPengurus!.penugasan[index].penugasan
+                              .penugasanNama,
+                          style: TextStyle(fontSize: 16)),
+                      Text(
+                          state.penugasanPengurus!.penugasan[index].bidangTugas,
+                          style: TextStyle(
+                              fontSize: 12, fontWeight: FontWeight.bold)),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_month,
+                            color: Colors.grey,
+                            size: 20,
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                              state.penugasanPengurus!.penugasan[index]
+                                      .penugasan.penugasanMulai
+                                      .toString() +
+                                  " - " +
+                                  state.penugasanPengurus!.penugasan[index]
+                                      .penugasan.penugasanSelesai
+                                      .toString(),
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                              )),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.location_on,
+                            color: Colors.grey,
+                            size: 20,
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                              state.penugasanPengurus!.penugasan[index]
+                                  .penugasan.penugasanTempat,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                              )),
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget PenugasanAnggota(PenugasanProvider state) {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: state.penugasanAnggota!.penugasan.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () => state.toDetailPengurus(context, index),
+            child: Container(
+              padding: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                  color: Color(0xffEBEBEF),
+                  borderRadius: BorderRadius.circular(30)),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.circle,
+                    size: 20,
+                    color: Colors.green,
+                  ),
+                  SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                          state.penugasanAnggota!.penugasan[index].penugasan
+                              .penugasanNama,
+                          style: TextStyle(fontSize: 16)),
+                      Text(state.penugasanAnggota!.penugasan[index].bidangTugas,
+                          style: TextStyle(
+                              fontSize: 12, fontWeight: FontWeight.bold)),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_month,
+                            color: Colors.grey,
+                            size: 20,
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                              state.penugasanAnggota!.penugasan[index].penugasan
+                                      .penugasanMulai
+                                      .toString() +
+                                  " - " +
+                                  state.penugasanAnggota!.penugasan[index]
+                                      .penugasan.penugasanSelesai
+                                      .toString(),
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                              )),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.location_on,
+                            color: Colors.grey,
+                            size: 20,
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                              state.penugasanAnggota!.penugasan[index].penugasan
+                                  .penugasanTempat,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                              )),
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
   }
 }

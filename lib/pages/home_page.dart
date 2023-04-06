@@ -1,3 +1,4 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -87,55 +88,89 @@ class HomePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          children: [
-                            Container(
-                              width: 70,
-                              height: 70,
-                              child: Icon(
-                                Icons.file_present_sharp,
-                                size: 40,
-                                color: Color(0xff8E44AD),
+                        InkWell(
+                          onTap: () {
+                            ScaffoldMessenger.of(context)
+                              ..hideCurrentSnackBar()
+                              ..showSnackBar(SnackBar(
+                                elevation: 0,
+                                behavior: SnackBarBehavior.floating,
+                                backgroundColor: Colors.transparent,
+                                content: AwesomeSnackbarContent(
+                                  title: 'Maaf',
+                                  message:
+                                      "halaman ini sedang dalam tahap developmnent",
+                                  contentType: ContentType.warning,
+                                ),
+                              ));
+                          },
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 70,
+                                height: 70,
+                                child: Icon(
+                                  Icons.file_present_sharp,
+                                  size: 40,
+                                  color: Color(0xff8E44AD),
+                                ),
+                                decoration: BoxDecoration(
+                                    color: Color(0xffE8DAEF),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
                               ),
-                              decoration: BoxDecoration(
-                                  color: Color(0xffE8DAEF),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              "AD/ART",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
-                            ),
-                          ],
+                              SizedBox(height: 5),
+                              Text(
+                                "AD/ART",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14),
+                              ),
+                            ],
+                          ),
                         ),
-                        Column(
-                          children: [
-                            Container(
-                              width: 70,
-                              height: 70,
-                              child: Icon(
-                                Icons.precision_manufacturing,
-                                size: 40,
-                                color: Color(0xffF39C12),
+                        InkWell(
+                          onTap: () {
+                            ScaffoldMessenger.of(context)
+                              ..hideCurrentSnackBar()
+                              ..showSnackBar(SnackBar(
+                                elevation: 0,
+                                behavior: SnackBarBehavior.floating,
+                                backgroundColor: Colors.transparent,
+                                content: AwesomeSnackbarContent(
+                                  title: 'Maaf',
+                                  message:
+                                      "halaman ini sedang dalam tahap developmnent",
+                                  contentType: ContentType.warning,
+                                ),
+                              ));
+                          },
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 70,
+                                height: 70,
+                                child: Icon(
+                                  Icons.precision_manufacturing,
+                                  size: 40,
+                                  color: Color(0xffF39C12),
+                                ),
+                                decoration: BoxDecoration(
+                                    color: Color(0xffFDEBD0),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
                               ),
-                              decoration: BoxDecoration(
-                                  color: Color(0xffFDEBD0),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              "Peraturan",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14),
-                            ),
-                          ],
+                              SizedBox(height: 5),
+                              Text(
+                                "Peraturan",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14),
+                              ),
+                            ],
+                          ),
                         ),
                         Column(
                           children: [

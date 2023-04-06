@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class PenugasanAnggota {
   PenugasanAnggota({
     required this.status,
@@ -121,8 +123,8 @@ class PenugasanPenugasan {
   final int penugasanId;
   final String penugasanNama;
   final String penugasanDeskripsi;
-  final DateTime penugasanMulai;
-  final DateTime penugasanSelesai;
+  final String penugasanMulai;
+  final String penugasanSelesai;
   final String penugasanTempat;
   final String penugasanWaktu;
   final String penugasanOleh;
@@ -135,8 +137,10 @@ class PenugasanPenugasan {
         penugasanId: json["penugasan_id"],
         penugasanNama: json["penugasan_nama"],
         penugasanDeskripsi: json["penugasan_deskripsi"],
-        penugasanMulai: DateTime.parse(json["penugasan_mulai"]),
-        penugasanSelesai: DateTime.parse(json["penugasan_selesai"]),
+        penugasanMulai: DateFormat.yMMMEd("in_ID")
+            .format(DateTime.parse(json["penugasan_mulai"])),
+        penugasanSelesai: DateFormat.yMMMEd("in_ID")
+            .format(DateTime.parse(json["penugasan_selesai"])),
         penugasanTempat: json["penugasan_tempat"],
         penugasanWaktu: json["penugasan_waktu"],
         penugasanOleh: json["penugasan_oleh"],

@@ -2,21 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sima_orbit_mobile/data/api_service.dart';
+import 'package:sima_orbit_mobile/data/models/penugasan_anggota_model.dart';
 import 'package:sima_orbit_mobile/data/models/penugasan_pengurus_model.dart';
 
 class PenugasanProvider extends ChangeNotifier {
   bool isLoading = true;
-  PenugasanPengurus? Penugasan;
+  PenugasanPengurus? penugasanPengurus;
+  PenugasanAnggota? penugasanAnggota;
+
+  String? status;
 
   void getPenugasan() async {
     var result = await ApiServices().PenugasanEndpoint();
     final prefs = await SharedPreferences.getInstance();
-    String? status = prefs.getString('status');
+    status = prefs.getString('status');
     if (status == "pengurus") {
-      Penugasan = PenugasanPengurus.fromJson(result);
+      penugasanPengurus = PenugasanPengurus.fromJson(result);
       isLoading = false;
       notifyListeners();
-    } else {}
+    } else if (status == "anggota") {
+      penugasanAnggota = PenugasanAnggota.fromJson(result);
+      isLoading = false;
+      notifyListeners();
+    }
   }
 
   int selectPengurus = 0;

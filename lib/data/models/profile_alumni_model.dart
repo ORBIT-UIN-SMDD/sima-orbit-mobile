@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class ProfileAlumni {
   ProfileAlumni({
     required this.status,
@@ -54,7 +56,8 @@ class Profile {
         foto: json["foto"],
         nama: json["nama"],
         tempatLahir: json["tempat_lahir"],
-        tanggalLahir: json["tanggal_lahir"],
+        tanggalLahir: DateFormat.yMMMMd("in_ID")
+            .format(DateTime.parse(json["tanggal_lahir"])),
         jenisKelamin: json["jenis_kelamin"],
         alamat: json["alamat"],
         noTelp: json["no_telp"],

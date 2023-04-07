@@ -24,6 +24,10 @@ class PenugasanProvider extends ChangeNotifier {
       penugasanAnggota = PenugasanAnggota.fromJson(result);
       isLoading = false;
       notifyListeners();
+    }else if (status == "alumni") {
+
+      isLoading = false;
+      notifyListeners();
     }
   }
 

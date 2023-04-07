@@ -36,6 +36,7 @@ class ProfilePage extends StatelessWidget {
                                           CrossAxisAlignment.center,
                                       children: [
                                         CircleAvatar(
+                                          backgroundColor: whiteColor,
                                           backgroundImage:
                                               NetworkImage(state.foto),
                                           radius: 30,
@@ -54,7 +55,7 @@ class ProfilePage extends StatelessWidget {
                                                   color: whiteColor),
                                             ),
                                             Text(
-                                              "NIM. ${state.nim}",
+                                              "ID. ${state.nim}",
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   color: whiteColor,
@@ -70,13 +71,13 @@ class ProfilePage extends StatelessWidget {
                     ),
                     SizedBox(height: 15),
                     state.statusPref == "pengurus"
-                        ? PengurusProfile(state)
+                        ? PengurusProfile(context, state)
                         : Container(),
                     state.statusPref == "anggota"
-                        ? AnggotaProfile(state)
+                        ? AnggotaProfile(context, state)
                         : Container(),
                     state.statusPref == "alumni"
-                        ? AlumniProfile(state)
+                        ? AlumniProfile(context, state)
                         : Container(),
                     Padding(
                       padding: const EdgeInsets.all(20),
@@ -114,7 +115,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget PengurusProfile(ProfileProvider state) {
+  Widget PengurusProfile(BuildContext context, ProfileProvider state) {
     return Column(
       children: [
         ListTile(
@@ -125,7 +126,7 @@ class ProfilePage extends StatelessWidget {
           ),
           title: Text('NIM'),
           subtitle: Text(state.profilePengurus!.profile.nim.toString()),
-          trailing: Icon(Icons.arrow_forward_ios),
+          // trailing: Icon(Icons.arrow_forward_ios),
         ),
         ListTile(
           leading: Icon(
@@ -136,6 +137,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('Email'),
           subtitle: Text(state.profilePengurus!.profile.email),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -146,6 +148,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('Phone'),
           subtitle: Text(state.profilePengurus!.profile.noTelp),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -156,6 +159,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('password'),
           subtitle: Text('********'),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -165,7 +169,7 @@ class ProfilePage extends StatelessWidget {
           ),
           title: Text('Bidang'),
           subtitle: Text(state.profilePengurus!.profile.bidang.bidangNama),
-          trailing: Icon(Icons.arrow_forward_ios),
+          // trailing: Icon(Icons.arrow_forward_ios),
         ),
         ListTile(
           leading: Icon(
@@ -176,6 +180,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('Tempat Lahir'),
           subtitle: Text(state.profilePengurus!.profile.tempatLahir),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -187,6 +192,7 @@ class ProfilePage extends StatelessWidget {
           subtitle:
               Text(state.profilePengurus!.profile.tanggalLahir.toString()),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -196,7 +202,7 @@ class ProfilePage extends StatelessWidget {
           ),
           title: Text('Fakultas'),
           subtitle: Text(state.profilePengurus!.profile.fakulta.fakultasNama),
-          trailing: Icon(Icons.arrow_forward_ios),
+          // trailing: Icon(Icons.arrow_forward_ios),
         ),
         ListTile(
           leading: Icon(
@@ -206,13 +212,13 @@ class ProfilePage extends StatelessWidget {
           ),
           title: Text('program Studi'),
           subtitle: Text(state.profilePengurus!.profile.prodi.prodiNama),
-          trailing: Icon(Icons.arrow_forward_ios),
+          // trailing: Icon(Icons.arrow_forward_ios),
         ),
       ],
     );
   }
 
-  Widget AnggotaProfile(ProfileProvider state) {
+  Widget AnggotaProfile(BuildContext context, ProfileProvider state) {
     return Column(
       children: [
         ListTile(
@@ -223,7 +229,6 @@ class ProfilePage extends StatelessWidget {
           ),
           title: Text('NIM'),
           subtitle: Text(state.profileAnggota!.profile.nim.toString()),
-          trailing: Icon(Icons.arrow_forward_ios),
         ),
         ListTile(
           leading: Icon(
@@ -234,6 +239,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('Email'),
           subtitle: Text(state.profileAnggota!.profile.email),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -263,7 +269,6 @@ class ProfilePage extends StatelessWidget {
           ),
           title: Text('Bidang'),
           subtitle: Text(state.profileAnggota!.profile.bidang.bidangNama),
-          trailing: Icon(Icons.arrow_forward_ios),
         ),
         ListTile(
           leading: Icon(
@@ -293,7 +298,6 @@ class ProfilePage extends StatelessWidget {
           ),
           title: Text('Fakultas'),
           subtitle: Text(state.profileAnggota!.profile.fakulta.fakultasNama),
-          trailing: Icon(Icons.arrow_forward_ios),
         ),
         ListTile(
           leading: Icon(
@@ -303,7 +307,6 @@ class ProfilePage extends StatelessWidget {
           ),
           title: Text('program Studi'),
           subtitle: Text(state.profileAnggota!.profile.prodi.prodiNama),
-          trailing: Icon(Icons.arrow_forward_ios),
         ),
         ListTile(
           leading: Icon(
@@ -314,13 +317,12 @@ class ProfilePage extends StatelessWidget {
           title: Text('Tanggal Mendaftar'),
           subtitle:
               Text(state.profileAnggota!.profile.tanggalMendaftar.toString()),
-          trailing: Icon(Icons.arrow_forward_ios),
         ),
       ],
     );
   }
 
-  Widget AlumniProfile(ProfileProvider state) {
+  Widget AlumniProfile(BuildContext context, ProfileProvider state) {
     return Column(
       children: [
         ListTile(
@@ -331,7 +333,6 @@ class ProfilePage extends StatelessWidget {
           ),
           title: Text('NIM'),
           subtitle: Text(state.profileAlumni!.profile.nim.toString()),
-          trailing: Icon(Icons.arrow_forward_ios),
         ),
         ListTile(
           leading: Icon(
@@ -342,6 +343,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('Email'),
           subtitle: Text(state.profileAlumni!.profile.email),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -352,6 +354,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('Phone'),
           subtitle: Text(state.profileAlumni!.profile.noTelp),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -362,6 +365,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('password'),
           subtitle: Text('********'),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -372,6 +376,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('Tempat Lahir'),
           subtitle: Text(state.profileAlumni!.profile.tempatLahir),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -382,6 +387,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('Tanggal Lahir'),
           subtitle: Text(state.profileAlumni!.profile.tanggalLahir.toString()),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -392,6 +398,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('Periode'),
           subtitle: Text(state.profileAlumni!.profile.periode.toString()),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -402,6 +409,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('Alamat'),
           subtitle: Text(state.profileAlumni!.profile.alamat),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -412,6 +420,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('Pekerjaan'),
           subtitle: Text(state.profileAlumni!.profile.pekerjaan),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
         ListTile(
           leading: Icon(
@@ -422,6 +431,7 @@ class ProfilePage extends StatelessWidget {
           title: Text('Golongan Darah'),
           subtitle: Text(state.profileAlumni!.profile.golonganDarah),
           trailing: Icon(Icons.arrow_forward_ios),
+          onTap: () => state.editProfile(context),
         ),
       ],
     );

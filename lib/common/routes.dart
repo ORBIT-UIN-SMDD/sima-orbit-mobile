@@ -15,6 +15,9 @@ import 'package:sima_orbit_mobile/pages/pengumuman_page.dart';
 import 'package:sima_orbit_mobile/pages/onboarding_page.dart';
 import 'package:sima_orbit_mobile/pages/penugasan_detail_page.dart';
 import 'package:sima_orbit_mobile/pages/penugasan_page.dart';
+import 'package:sima_orbit_mobile/pages/profile/profile_edit_alumni.dart';
+import 'package:sima_orbit_mobile/pages/profile/profile_edit_anggota.dart';
+import 'package:sima_orbit_mobile/pages/profile/profile_edit_pengurus.dart';
 import 'package:sima_orbit_mobile/pages/splash_screen.dart';
 
 final GoRouter routes = GoRouter(
@@ -136,6 +139,27 @@ final GoRouter routes = GoRouter(
             name: "agenda",
             builder: (BuildContext context, GoRouterState state) {
               return AgendaPage();
+            },
+          ),
+           GoRoute(
+            path: 'editPengurus',
+            name: "edit_pengurus",
+            builder: (BuildContext context, GoRouterState state) {
+              return ProfileEditPengurus();
+            },
+          ),
+           GoRoute(
+            path: 'editAnggota',
+            name: "edit_anggota",
+            builder: (BuildContext context, GoRouterState state) {
+              return ProfileEditAnggota();
+            },
+          ),
+           GoRoute(
+            path: 'editAlumni',
+            name: "edit_alumni",
+            builder: (BuildContext context, GoRouterState state) {
+              return ProfileEditAlumni();
             },
           ),
         ]),

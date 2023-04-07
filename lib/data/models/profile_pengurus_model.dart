@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class ProfilePengurus {
   ProfilePengurus({
     required this.status,
@@ -9,7 +11,8 @@ class ProfilePengurus {
   final String message;
   final ProfileClass profile;
 
-  factory ProfilePengurus.fromJson(Map<String, dynamic> json) => ProfilePengurus(
+  factory ProfilePengurus.fromJson(Map<String, dynamic> json) =>
+      ProfilePengurus(
         status: json["status"],
         message: json["message"],
         profile: ProfileClass.fromJson(json["profile"]),
@@ -42,7 +45,7 @@ class ProfileClass {
   final String foto;
   final String nama;
   final String tempatLahir;
-  final DateTime tanggalLahir;
+  final String tanggalLahir;
   final bool jenisKelamin;
   final String alamat;
   final int fakultasId;
@@ -62,7 +65,8 @@ class ProfileClass {
         foto: json["foto"],
         nama: json["nama"],
         tempatLahir: json["tempat_lahir"],
-        tanggalLahir: DateTime.parse(json["tanggal_lahir"]),
+        tanggalLahir: DateFormat.yMMMMd("in_ID")
+            .format(DateTime.parse(json["tanggal_lahir"])),
         jenisKelamin: json["jenis_kelamin"],
         alamat: json["alamat"],
         fakultasId: json["fakultas_id"],
@@ -77,25 +81,6 @@ class ProfileClass {
         prodi: Prodi.fromJson(json["prodi"]),
         bidang: Bidang.fromJson(json["bidang"]),
       );
-
-  Map<String, dynamic> toJson() => {
-        "nim": nim,
-        "foto": foto,
-        "nama": nama,
-        "tempat_lahir": tempatLahir,
-        "tanggal_lahir":
-            "${tanggalLahir.year.toString().padLeft(4, '0')}-${tanggalLahir.month.toString().padLeft(2, '0')}-${tanggalLahir.day.toString().padLeft(2, '0')}",
-        "jenis_kelamin": jenisKelamin,
-        "alamat": alamat,
-        "fakultas_id": fakultasId,
-        "prodi_id": prodiId,
-        "bidang_id": bidangId,
-        "no_telp": noTelp,
-        "email": email,
-        "password": password,
-        "periode": periode,
-        "active": active,
-      };
 }
 
 class Bidang {

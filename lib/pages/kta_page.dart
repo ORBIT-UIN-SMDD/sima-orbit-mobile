@@ -58,8 +58,7 @@ class KtaPage extends StatelessWidget {
                                     child: Align(
                                       alignment: Alignment.topCenter,
                                       child: Text(
-                                        state.nama
-                                            .toUpperCase(),
+                                        state.nama.toUpperCase(),
                                         style: TextStyle(
                                           fontSize: 15,
                                           color: whiteColor,
@@ -73,8 +72,7 @@ class KtaPage extends StatelessWidget {
                                     child: Align(
                                       alignment: Alignment.topCenter,
                                       child: Text(
-                                        "ID. " +
-                                            state.nim.toString(),
+                                        "ID. " + state.nim.toString(),
                                         style: TextStyle(
                                           fontSize: 13,
                                           color: whiteColor,
@@ -87,7 +85,8 @@ class KtaPage extends StatelessWidget {
                                       child: Align(
                                         alignment: Alignment.topCenter,
                                         child: Text(
-                                          state.statusPref!.toUpperCase(),
+                                          state.statusPref!.toUpperCase() +
+                                              state.bidang,
                                           style: TextStyle(
                                             fontSize: 13,
                                             color: whiteColor,

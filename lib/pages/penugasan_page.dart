@@ -62,6 +62,12 @@ class PenugasanPage extends StatelessWidget {
                               : Container(),
                           state.status == "anggota"
                               ? PenugasanAnggota(state)
+                              : Container(),
+                          state.status == "alumni"
+                              ? Center(
+                                  child: Text(
+                                      "Kamu Belum Pernah Mendapat Penugasan"),
+                                )
                               : Container()
                         ],
                       ),

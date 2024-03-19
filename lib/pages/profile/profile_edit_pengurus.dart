@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 import 'package:sima_orbit_mobile/const/color.dart';
 import 'package:sima_orbit_mobile/provider/profile_provider.dart';
 import 'package:sima_orbit_mobile/widget/textfield_costum.dart';
@@ -25,6 +25,47 @@ class ProfileEditPengurus extends StatelessWidget {
               builder: (context, state, child) {
                 return Column(
                   children: [
+                    SizedBox(height: 12),
+                    state.imageRegister != null
+                        ? Image.file(
+                            state.imageRegister!,
+                            width: 100,
+                          )
+                        : Image.asset(
+                            "assets/ilustrasi/add_photo.png",
+                            width: 100,
+                          ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton.icon(
+                            onPressed: () async {
+                              context.goNamed("camera");
+                            },
+                            icon: Icon(
+                              Icons.photo_camera,
+                              size: 22,
+                            ),
+                            label: Text(
+                              "Ambil Foto",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14),
+                            )),
+                        TextButton.icon(
+                            onPressed: () {
+                              state.pickImage(context);
+                            },
+                            icon: Icon(
+                              Icons.photo,
+                              size: 22,
+                            ),
+                            label: Text(
+                              "Unggah Foto",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14),
+                            )),
+                      ],
+                    ),
                     SizedBox(height: 8),
                     TextFieldCustom(
                       label: "Email",

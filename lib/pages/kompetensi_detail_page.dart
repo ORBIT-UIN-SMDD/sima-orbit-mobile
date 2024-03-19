@@ -73,8 +73,7 @@ class KompetensiDetailPage extends StatelessWidget {
                         SizedBox(height: 3),
                         Text(
                           state.kompetensi!.kompetensi[state.selectkompetensi]
-                              .kompetensiTanggal
-                              .toIso8601String(),
+                              .kompetensiTanggal,
                           style: TextStyle(fontSize: 14, color: Colors.black),
                         ),
                         SizedBox(height: 7),

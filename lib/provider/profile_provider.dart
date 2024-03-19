@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sima_orbit_mobile/data/api_service.dart';
 import 'package:sima_orbit_mobile/data/models/profile_alumni_model.dart';
@@ -122,6 +125,38 @@ class ProfileProvider extends ChangeNotifier {
       tanggalLahirC.text = formattedDate; //set output date to TextField value.
       notifyListeners();
     } else {}
+  }
+
+  File? imageRegister;
+  Future<void> pickImage(BuildContext context) async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      CroppedFile? croppedFile = await ImageCropper().cropImage(
+        sourcePath: image.path,
+        aspectRatio: CropAspectRatio(ratioX: 3, ratioY: 4),
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Cropper',
+              toolbarColor: Colors.deepOrange,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Cropper',
+          ),
+          WebUiSettings(
+            context: context,
+          ),
+        ],
+      );
+      if (croppedFile != null) {
+        imageRegister = File(croppedFile.path);
+        notifyListeners();
+        log(croppedFile.path);
+      }
+    }
   }
 
   void editProfile(BuildContext context) {

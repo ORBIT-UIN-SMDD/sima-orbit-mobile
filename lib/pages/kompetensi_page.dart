@@ -110,8 +110,7 @@ class KompetensiPage extends StatelessWidget {
                                                     state
                                                         .kompetensi!
                                                         .kompetensi[index]
-                                                        .kompetensiTanggal
-                                                        .toIso8601String(),
+                                                        .kompetensiTanggal,
                                                     style: TextStyle(
                                                       fontSize: 12,
                                                       color: Colors.grey,

@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Kompetensi {
   Kompetensi({
     required this.status,
@@ -36,7 +38,7 @@ class KompetensiElement {
   final String kompetensiNama;
   final String kompetensiUntuk;
   final String kompetensiDiverifikasiOleh;
-  final DateTime kompetensiTanggal;
+  final String kompetensiTanggal;
   final String kompetensiSertifikat;
   final Bidang bidang;
 
@@ -48,7 +50,8 @@ class KompetensiElement {
         kompetensiNama: json["kompetensi_nama"],
         kompetensiUntuk: json["kompetensi_untuk"],
         kompetensiDiverifikasiOleh: json["kompetensi_diverifikasi_oleh"],
-        kompetensiTanggal: DateTime.parse(json["kompetensi_tanggal"]),
+        kompetensiTanggal: DateFormat.yMMMMd("in_ID")
+            .format(DateTime.parse(json["kompetensi_tanggal"])),
         kompetensiSertifikat: json["kompetensi_sertifikat"],
         bidang: Bidang.fromJson(json["bidang"]),
       );

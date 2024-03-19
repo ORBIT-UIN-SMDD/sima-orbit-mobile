@@ -1,7 +1,7 @@
 import 'package:drop_shadow_image/drop_shadow_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 import 'package:sima_orbit_mobile/const/color.dart';
 import 'package:sima_orbit_mobile/provider/auth_provider.dart';
 import 'package:sima_orbit_mobile/widget/textfield_costum.dart';

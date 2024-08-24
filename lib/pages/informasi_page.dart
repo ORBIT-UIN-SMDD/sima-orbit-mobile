@@ -115,12 +115,12 @@ class InformasiPage extends StatelessWidget {
                             CircleAvatar(
                               backgroundColor: whiteColor,
                               backgroundImage: NetworkImage(
-                                  "https://sima.orbituinbkt.com/profile/pengurus/7F83EB11-8AD5-4C4A-A602-2DD01B06B42D-removebg-preview.png"),
+                                  "https://sima.orbituinbkt.com/profile/pengurus/IMG-20230315-WA0036.jpg"),
                               minRadius: 35,
                             ),
                             SizedBox(width: 10),
                             Text(
-                              "Rahma Yanti",
+                              "Rahmatul Wahid ",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 14,
@@ -145,12 +145,12 @@ class InformasiPage extends StatelessWidget {
                             CircleAvatar(
                               backgroundColor: whiteColor,
                               backgroundImage: NetworkImage(
-                                  "https://sima.orbituinbkt.com/profile/pengurus/8C587B79-90A9-4213-8CE8-BAACE0B9C126.JPG"),
+                                  "https://sima.orbituinbkt.com/profile/pengurus/20230405_144406.jpg"),
                               minRadius: 35,
                             ),
                             SizedBox(width: 10),
                             Text(
-                              "Mirfa Reza Ashary",
+                              "Artian",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 14,
@@ -170,12 +170,12 @@ class InformasiPage extends StatelessWidget {
                             CircleAvatar(
                               backgroundColor: whiteColor,
                               backgroundImage: NetworkImage(
-                                  "https://sima.orbituinbkt.com/profile/pengurus/IMG-20230330-WA0053.jpg"),
+                                  "https://sima.orbituinbkt.com/profile/pengurus/A0B38FB8-4E70-4777-8D36-B2B90320BC17.JPG"),
                               minRadius: 35,
                             ),
                             SizedBox(width: 10),
                             Text(
-                              "Tessa Melinda",
+                              "VERA ARVIANA",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 14,

@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:sima_orbit_mobile/const/color.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -73,15 +76,26 @@ class AboutPage extends StatelessWidget {
                                 fontSize: 12,
                               ),
                             ),
-                            Row(
-                              children: [
-                                Image.asset(
-                                  "assets/icons/LinkedIn.png",
-                                  width: 22,
-                                ),
-                                SizedBox(width: 7),
-                                Text("in/fajri-chan")
-                              ],
+                            GestureDetector(
+                              onTap: () async {
+                                try {
+                                  Uri linkedin = Uri.parse(
+                                      "https://www.linkedin.com/in/fajri-chan/");
+                                  await launchUrl(linkedin);
+                                } catch (e) {
+                                  log(e.toString());
+                                }
+                              },
+                              child: Row(
+                                children: [
+                                  Image.asset(
+                                    "assets/icons/LinkedIn.png",
+                                    width: 22,
+                                  ),
+                                  SizedBox(width: 7),
+                                  Text("in/fajri-chan")
+                                ],
+                              ),
                             ),
                             Row(
                               children: [
